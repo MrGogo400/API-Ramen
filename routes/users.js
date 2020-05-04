@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../models');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 /* GET users listing. */
 router.get('/', async(req, res, next) => {
@@ -12,24 +10,24 @@ router.get('/', async(req, res, next) => {
 
         res.format({
           
-          // html: () => {
-          //   res.render("User/index", {
-          //     title: "User",
-          //     User: User.rows
-          //   })
-          // },
+          html: () => {
+            res.render("users/index", {
+              title: "User",
+              user: user.row
+            })
+          },
     
           json: () => {
             res.status(200).send(user);
           }
         })
       } catch(e){
-        res.status(500).send(e);
+        res.send(e);
     }
 
 });
 
-router.post('/add', async(req, res, next) => {
+router.post('/', async(req, res, next) => {
   try {
 
     const user = await db.User.create({
@@ -41,12 +39,9 @@ router.post('/add', async(req, res, next) => {
     
     res.format({
       
-      // html: () => {
-      //   res.render("User/index", {
-      //     title: "User",
-      //     User: User.rows
-      //   })
-      // },
+      html: () => {
+        res.redirect("/users")
+      },
 
       json: () => {
         res.status(201).send(user);
@@ -58,6 +53,17 @@ router.post('/add', async(req, res, next) => {
 
 });
 
+router.get('/add', async(req, res, next) => {
+  try {
+      res.render("users/add")
+  } catch(e){
+    res.status(500).send(e);
+}
+
+});
+
+
+
 router.get('/:userId', async(req, res, next) => {
   try {
 
@@ -67,12 +73,12 @@ router.get('/:userId', async(req, res, next) => {
 
     res.format({
       
-      // html: () => {
-      //   res.render("User/index", {
-      //     title: "User",
-      //     User: User.rows
-      //   })
-      // },
+      html: () => {
+        res.render("users/info", {
+          title: "user info",
+          user: user
+        })
+      },
 
       json: () => {
         res.status(200).send(user);
@@ -92,7 +98,7 @@ router.get('/:userId/edit', async(req, res, next) => {
       req.params.userId
     );
 
-    res.render("user/edit")
+    res.render("users/edit")
 
   } catch(e){
     res.status(500).send(e);
@@ -128,9 +134,9 @@ router.patch('/:userId', async(req, res, next) => {
 
     res.format({
 
-      // html: function () {
-      //   res.redirect('/User')
-      // },
+      html: function () {
+        res.redirect('/users')
+      },
 
       json: function () {
         res.status(200).send(updateduser);
@@ -151,9 +157,9 @@ router.delete('/:userId', async(req, res, next) => {
 
     res.format({
 
-      // html: function () {
-      //   res.redirect('/User')
-      // },
+      html: function () {
+        res.redirect('/users')
+      },
 
       json: function () {
         res.sendStatus(200).send(userdelete);

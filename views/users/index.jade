@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+
+    h1 Users
+
+    table.table
+        tbody
+        tr
+          td firstname :
+          td= users.firstName
+        tr
+          td lastname :
+          td= users.lastName
+        tr 
+          td created at :
+          td= users.createdAt
+        tr
+          td updated at :
+          td= users.updatedAt
+  
+    br
+    form(action='/users?_method=DELETE', method='POST')
+      button.btn.btn-default Delete
+    br
+    a(href='/users/edit') 
+      button.btn.btn-default Edit
