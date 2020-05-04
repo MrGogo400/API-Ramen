@@ -1,1 +1,24 @@
-H1 edit
+block content
+    form(method='patch', action='/users/' + users.id + '/edit')
+        h3 First Name :
+        input(value='#{users.id.firstName}', name='content')
+        ul
+        br
+        h3 Last Name :
+        input(value='users.lastName', name='content')
+        ul
+        br
+        h3 E-Mail :
+        input(value='users.email', name='content')
+        ul
+        br
+        h3 Password :
+        input(type='password', value='Mot de Passe', name='content')
+        ul
+        input(type='submit', value='Update').btn.btn-primary.btn-lg
+        
+    // Back
+    br
+    br
+    h2
+        a(href='/users/index').btn.btn-default.btn-lg Back

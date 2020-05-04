@@ -1,1 +1,23 @@
-H1 add
+block content
+    h1.text-center Todo
+    ul
+    h3.text-center Créer
+    form(method='post', action='/users/#{users.id}')
+        .input-group
+            input.form-control(type='text', placeholder='Prénom', name='firstName')
+            ul
+            input.form-control(type='text', placeholder='Nom', name='lastName')
+            ul
+            input.form-control(type='text', placeholder='E-Mail', name='email')
+            ul
+            input.form-control(type='password', placeholder='Mot de passe', name='password')
+            ul
+            span.input-group-btn
+                input.btn.btn-success(type='submit', value='Ajouter Utilisateur')
+
+
+// Back
+br
+br
+h2
+    a(href='/users/index').btn.btn-default.btn-lg Back
