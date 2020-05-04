@@ -10,12 +10,12 @@ router.get('/', async(req, res, next) => {
 
         res.format({
           
-          // html: () => {
-          //   res.render("User/index", {
-          //     title: "User",
-          //     User: User.rows
-          //   })
-          // },
+          html: () => {
+            res.render("ramens/index", {
+              title: "Ramen",
+              ramen: ramen
+            })
+          },
     
           json: () => {
             res.status(200).send(ramen);
@@ -27,7 +27,7 @@ router.get('/', async(req, res, next) => {
 
 });
 
-router.post('/add', async(req, res, next) => {
+router.post('/', async(req, res, next) => {
   try {
 
     const ramen = await db.Ramen.create({
@@ -39,17 +39,22 @@ router.post('/add', async(req, res, next) => {
 
     res.format({
       
-      // html: () => {
-      //   res.render("User/index", {
-      //     title: "User",
-      //     User: User.rows
-      //   })
-      // },
+      html: () => {
+        res.render("ramens/index")},
 
       json: () => {
         res.status(201).send(ramen);
       }
     })
+  } catch(e){
+    res.status(500).send(e);
+}
+
+});
+
+router.get('/add', async(req, res, next) => {
+  try {
+      res.render("ramens/add")
   } catch(e){
     res.status(500).send(e);
 }
@@ -65,12 +70,12 @@ router.get('/:ramenId', async(req, res, next) => {
 
     res.format({
       
-      // html: () => {
-      //   res.render("User/index", {
-      //     title: "User",
-      //     User: User.rows
-      //   })
-      // },
+      html: () => {
+        res.render("ramens/info", {
+          title: "ramen info",
+          ramen: ramen
+        })
+      },
 
       json: () => {
         res.status(200).send(ramen);
@@ -90,7 +95,7 @@ router.get('/:ramenId/edit', async(req, res, next) => {
       req.params.ramenId
     );
 
-    res.render("ramen/edit")
+    res.render("ramens/edit")
 
   } catch(e){
     res.status(500).send(e);
@@ -126,9 +131,9 @@ router.patch('/:ramenId', async(req, res, next) => {
 
     res.format({
 
-      // html: function () {
-      //   res.redirect('/User')
-      // },
+      html: function () {
+        res.redirect('/ramens')
+      },
 
       json: function () {
         res.status(200).send(updatedramen);
@@ -149,9 +154,9 @@ router.delete('/:ramenId', async(req, res, next) => {
 
     res.format({
 
-      // html: function () {
-      //   res.redirect('/User')
-      // },
+      html: function () {
+        res.redirect('/ramens')
+      },
 
       json: function () {
         res.sendStatus(200).send(ramendelete);

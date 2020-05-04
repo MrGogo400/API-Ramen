@@ -13,7 +13,7 @@ router.get('/', async(req, res, next) => {
           html: () => {
             res.render("users/index", {
               title: "User",
-              user: user.row
+              user: user
             })
           },
     
