@@ -1,27 +1,41 @@
+//- block content
+//-   h1 #{title}
+//-   ul.list-group
+//-     each users in user
+//-       li.list-group-item
+//-         a(href='/users/'+users.id)= users.email
+
 extends ../layout
 
 block content
 
-    h1 Users
+    h1 All Users
 
     table.table
-        tbody
+     
+      tbody
+      each users in user 
         tr
-          td firstname :
+          td id :
+          td= users.id
+        tr
+          td firstName :
           td= users.firstName
         tr
-          td lastname :
+          td lastName :
           td= users.lastName
         tr 
+          td email :
+          td= users.email
+        tr
           td created at :
           td= users.createdAt
         tr
           td updated at :
-          td= users.updatedAt
-  
-    br
-    form(action='/users?_method=DELETE', method='POST')
-      button.btn.btn-default Delete
-    br
-    a(href='/users/edit') 
-      button.btn.btn-default Edit
+          td= users.updatedAt  
+        form(action='/users/' + users.id method='post' name='delete')
+            button.btn.btn-default Delete
+
+        a(href='/users/'+ users.id + '/edit') 
+            button.btn.btn-default Edit
+    

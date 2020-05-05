@@ -33,9 +33,10 @@ block content
         tr
           td updated at :
           td= ramens.updatedAt  
-        form(action='/ramens/' + ramens.id + '/method=DELETE', method='POST')
+        a(href='/ramens/' + ramens.id, method='DELETE')
             button.btn.btn-default Delete
 
-        a(href='/ramens/'+ ramens.id + '/edit') 
-            button.btn.btn-default Edit
+        button.btn.btn-default Edit
+            a(href='/ramens/'+ ramens.id + '/edit') 
+            
     
