@@ -8,18 +8,18 @@ block content
 
     .form-group
       label(for='firstName') Prénom
-      input#firstName.form-control(type='text', name='firstName')
+      input#firstName.form-control(type='text', name='firstName', required)
 
     .form-group
       label(for='lastName') Nom
-      textarea#lastName.form-control(name='lastName')
+      textarea#lastName.form-control(name='lastName', required)
 
     .form-group
       label(for='email') Adresse Mail
-      textarea#email.form-control(name='email')
+      textarea#email.form-control(name='email', required)
 
     .form-group
       label(for='password') Mot de passe
-      textarea#email.form-control(name='password')
+      input#email.form-control(name='password', required, type="password")
 
     input.btn.btn-default(type='submit', value='Create')
