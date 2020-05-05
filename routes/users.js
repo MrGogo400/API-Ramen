@@ -98,8 +98,14 @@ router.get('/:userId/edit', async(req, res, next) => {
       req.params.userId
     );
 
-    res.render("users/edit")
-
+    res.format({
+      html: () => {
+        res.render("users/edit", {
+          title: "ramen",
+          user: user
+        })
+      }
+    })
   } catch(e){
     res.status(500).send(e);
 }

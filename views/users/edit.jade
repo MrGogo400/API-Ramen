@@ -2,7 +2,7 @@ extends ../layout
 
 block content
 
-  h1= 'Update' + user.email     
+  h1= 'Update ' + user.email     
   form(action='/users/' + user.id + '?_method=PATCH', method='POST')
     .form-group
       label(for='firstName') firstName

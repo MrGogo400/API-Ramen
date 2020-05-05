@@ -95,8 +95,14 @@ router.get('/:ramenId/edit', async(req, res, next) => {
       req.params.ramenId
     );
 
-    res.render("ramens/edit")
-
+    res.format({
+      html: () => {
+        res.render("ramens/edit", {
+          title: "ramen",
+          ramen: ramen
+        })
+      }
+    })
   } catch(e){
     res.status(500).send(e);
 }

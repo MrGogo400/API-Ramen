@@ -2,15 +2,15 @@ extends ../layout
 
 block content
 
-  h1= 'Update' + ramen.Nom     
-  form(action='/ramens/' + ramenId + '?_method=PATCH', method='POST')
+  h1= 'Update ' + ramen.Nom     
+  form(action='/ramens/' + ramen.id + '?_method=PATCH', method='POST')
     .form-group
       label(for='Nom') Nom
-      input#Nom.form-control(type='text', name='Nom' value=ramen.Nom)
+      input#Nom.form-control(type='text', name='Nom' value= ramen.Nom)
 
     .form-group
       label(for='Marque') Marque
-      textarea#Marque.form-control(name='Marque')=ramen.Marque
+      textarea#Marque.form-control(name='Marque')= ramen.Marque
     
     .form-group
       label(for='Gout') Gout
@@ -18,7 +18,7 @@ block content
 
     .form-group
       label(for='Note') Note
-      textarea#Marque.form-control(name='Note')=ramen.Note
+      textarea#Marque.form-control(name='Note')= ramen.Note
 
 
     input.btn.btn-default(type='submit', value='Update')
