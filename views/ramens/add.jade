@@ -1,1 +1,26 @@
-H1 add
+
+extends ../layout
+
+block content
+
+  h1= isNew ? 'Create a user' : 'Update a ramens'
+        
+  form(action='/ramens', method='POST')
+
+    .form-group
+      label(for='Nom') Nom
+      input#Nom.form-control(type='text', name='Nom')
+
+    .form-group
+      label(for='Marque') Marque
+      textarea#Marque.form-control(name='Marque')
+
+    .form-group
+      label(for='Gout') Gout
+      textarea#Gout.form-control(name='Gout')
+
+    .form-group
+      label(for='Note') Note
+      textarea#Gout.form-control(name='Note')
+
+    input.btn.btn-default(type='submit', value='Create')

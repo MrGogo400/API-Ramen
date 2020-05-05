@@ -1,1 +1,42 @@
-H1 info
+//- block content
+//-   h1 #{title}
+//-   ul.list-group
+//-     each ramens in ramen
+//-       li.list-group-item
+//-         a(href='/ramens/'+ramens.id)= ramens.email
+
+extends ../layout
+
+block content
+
+    h1= ramen.Nom
+
+    table.table
+      tbody
+        tr
+          td id :
+          td= ramen.id
+        tr
+          td Nom :
+          td= ramen.Nom
+        tr
+          td Marque :
+          td= ramen.Marque
+        tr 
+          td Gout :
+          td= ramen.Gout
+        tr
+          td Note :
+          td= ramen.Note
+        tr
+          td created at :
+          td= ramen.createdAt
+        tr
+          td updated at :
+          td= ramen.updatedAt
+        form(action='/ramens/' + ramen.id + '?_method=DELETE', method='POST')
+            button.btn.btn-default Delete
+    
+        a(href='/ramens/' + ramen.id + '/edit') 
+            button.btn.btn-default Edit
+    

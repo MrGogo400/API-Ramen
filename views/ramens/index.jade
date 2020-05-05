@@ -16,27 +16,11 @@ block content
       tbody
       each ramens in ramen 
         tr
-          td id :
-          td= ramens.Nom
-        tr
-          td firstName :
-          td= ramens.Marque
-        tr
-          td lastName :
-          td= ramens.Gout
-        tr 
-          td email :
-          td= ramens.Note
-        tr
-          td created at :
-          td= ramens.createdAt
-        tr
-          td updated at :
-          td= ramens.updatedAt  
-        a(href='/ramens/' + ramens.id, method='DELETE')
-            button.btn.btn-default Delete
+          a.list-group-item(href='/ramens/' + ramens.id)= ramens.Nom 
+        form(action='/ramens/'+ ramens.id +'?_method=DELETE', method='POST')
+          button(type='submit') Delete resource
 
-        button.btn.btn-default Edit
-            a(href='/ramens/'+ ramens.id + '/edit') 
-            
-    
+
+        a(href='/ramens/'+ ramens.id + '/edit') 
+            button.btn.btn-default Edit
+    a(href='/ramens/add') New ramen

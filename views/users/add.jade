@@ -1,23 +1,26 @@
+
+extends ../layout
+
 block content
-    h1.text-center Todo
-    ul
-    h3.text-center Créer
-    form(method='post', action='/users/#{users.id}')
-        .input-group
-            input.form-control(type='text', placeholder='Prénom', name='firstName')
-            ul
-            input.form-control(type='text', placeholder='Nom', name='lastName')
-            ul
-            input.form-control(type='text', placeholder='E-Mail', name='email')
-            ul
-            input.form-control(type='password', placeholder='Mot de passe', name='password')
-            ul
-            span.input-group-btn
-                input.btn.btn-success(type='submit', value='Ajouter Utilisateur')
 
+  h1= isNew ? 'Create a user' : 'Update a user'
+        
+  form(action='/users', method='POST')
 
-// Back
-br
-br
-h2
-    a(href='/users/index').btn.btn-default.btn-lg Back
+    .form-group
+      label(for='firstName') firstName
+      input#firstName.form-control(type='text', name='firstName')
+
+    .form-group
+      label(for='lastName') lastName
+      textarea#lastName.form-control(name='lastName')
+
+    .form-group
+      label(for='email') email
+      textarea#email.form-control(name='email')
+
+    .form-group
+      label(for='password') password
+      textarea#email.form-control(name='password')
+
+    input.btn.btn-default(type='submit', value='Create')

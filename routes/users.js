@@ -18,7 +18,7 @@ router.get('/', async(req, res, next) => {
           },
     
           json: () => {
-            res.status(200).send(user);
+            res.json(user)
           }
         })
       } catch(e){
@@ -152,8 +152,9 @@ router.delete('/:userId', async(req, res, next) => {
   try {
 
     const userdelete = await db.User.destroy({
-      where: {id: req.params.userId}
-    });
+      where: {
+        id: req.params.userId
+      }});
 
     res.format({
 
@@ -162,7 +163,7 @@ router.delete('/:userId', async(req, res, next) => {
       },
 
       json: function () {
-        res.sendStatus(200).send(userdelete);
+        res.json(userdelete)
       }
     })
 

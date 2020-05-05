@@ -16,26 +16,11 @@ block content
       tbody
       each users in user 
         tr
-          td id :
-          td= users.id
-        tr
-          td firstName :
-          td= users.firstName
-        tr
-          td lastName :
-          td= users.lastName
-        tr 
-          td email :
-          td= users.email
-        tr
-          td created at :
-          td= users.createdAt
-        tr
-          td updated at :
-          td= users.updatedAt  
-        form(action='/users/' + users.id method='post' name='delete')
-            button.btn.btn-default Delete
+          a.list-group-item(href='/users/' + users.id)= users.email 
+        form(action='/users/'+ users.id +'?_method=DELETE', method='POST')
+          button(type='submit') Delete resource
+
 
         a(href='/users/'+ users.id + '/edit') 
             button.btn.btn-default Edit
-    
+    a(href='/users/add') New user

@@ -40,7 +40,7 @@ router.post('/', async(req, res, next) => {
     res.format({
       
       html: () => {
-        res.render("ramens/index")},
+        res.redirect("/ramens")},
 
       json: () => {
         res.status(201).send(ramen);
