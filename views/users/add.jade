@@ -1,4 +1,3 @@
-
 extends ../layout
 
 block content
@@ -8,19 +7,19 @@ block content
   form(action='/users', method='POST')
 
     .form-group
-      label(for='firstName') firstName
+      label(for='firstName') Prénom
       input#firstName.form-control(type='text', name='firstName')
 
     .form-group
-      label(for='lastName') lastName
+      label(for='lastName') Nom
       textarea#lastName.form-control(name='lastName')
 
     .form-group
-      label(for='email') email
+      label(for='email') Adresse Mail
       textarea#email.form-control(name='email')
 
     .form-group
-      label(for='password') password
+      label(for='password') Mot de passe
       textarea#email.form-control(name='password')
 
     input.btn.btn-default(type='submit', value='Create')

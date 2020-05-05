@@ -5,19 +5,19 @@ block content
   h1= 'Update ' + user.email     
   form(action='/users/' + user.id + '?_method=PATCH', method='POST')
     .form-group
-      label(for='firstName') firstName
+      label(for='firstName') Prénom
       input#firstName.form-control(type='text', name='firstName' value=user.firstName)
 
     .form-group
-      label(for='lastName') lastName
+      label(for='lastName') Nom
       textarea#lastName.form-control(name='lastName')=user.lastName
     
     .form-group
-      label(for='email') email
+      label(for='email') Adresse mail
       textarea#lastName.form-control(name='email')= user.email
 
     .form-group
-      label(for='password') password
+      label(for='password') Mot de passe
       textarea#lastName.form-control(name='password')=user.password
 
 
